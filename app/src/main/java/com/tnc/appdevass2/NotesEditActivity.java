@@ -114,11 +114,11 @@ public class NotesEditActivity extends AppCompatActivity {
                     } else {
                         currentNote.setDate(datePicker.getText().toString());
                         if (myNotes == null)
-                            myNotes=new ArrayList<>();
+                            myNotes = new ArrayList<>();
 
                     }
                     saveNotesTitleArray();
-                    Toast.makeText(NotesEditActivity.this,"Saved Successfully",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NotesEditActivity.this, "Saved Successfully", Toast.LENGTH_LONG).show();
                     NotesEditActivity.this.finish();
 
 
@@ -154,6 +154,8 @@ public class NotesEditActivity extends AppCompatActivity {
                 while (true) {
                     // get text from input
                     String txtInput = descriptionEdit.getText().toString();
+                    String previous = mistakes.getText().toString();
+                    String currentWords = "";
                     // break int words
                     StringTokenizer st = new StringTokenizer(txtInput);
                     while (st.hasMoreTokens()) {
@@ -166,19 +168,17 @@ public class NotesEditActivity extends AppCompatActivity {
                             }
                         }
                         if (!wordfound) {
-                            final String myword = word;
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    mistakes.setText(
-                                            mistakes.getText().toString()
-                                                    + "\n" + myword);
-
-                                }
-                            });
+                            currentWords = currentWords + wordfound + "\n";
                         }
 
                     }
-
+                    final String myword = currentWords;
+                    if (currentWords.equalsIgnoreCase(previous))
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                mistakes.setText(myword);
+                            }
+                        });
                     // compare words with dictionary
                     // words not found added to mistakes
                     // sleep for 5 seconds
@@ -217,7 +217,7 @@ public class NotesEditActivity extends AppCompatActivity {
         descriptionEdit = findViewById(R.id.topicDescriptionEdit);
         mistakes = findViewById(R.id.topicMistakesEdit);
         saveicon = findViewById(R.id.save_icon);
-        dateText=findViewById(R.id.datetvedit);
+        dateText = findViewById(R.id.datetvedit);
         dictionary = new Vector<>();
         try {
             InputStream istream = getResources().openRawResource(R.raw.words);
