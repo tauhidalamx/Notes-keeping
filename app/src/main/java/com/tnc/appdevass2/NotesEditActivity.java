@@ -168,12 +168,12 @@ public class NotesEditActivity extends AppCompatActivity {
                             }
                         }
                         if (!wordfound) {
-                            currentWords = currentWords + wordfound + "\n";
+                            currentWords = currentWords + word + "\n";
                         }
 
                     }
                     final String myword = currentWords;
-                    if (currentWords.equalsIgnoreCase(previous))
+                    if (!currentWords.equalsIgnoreCase(previous))
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 mistakes.setText(myword);
@@ -188,13 +188,13 @@ public class NotesEditActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mistakes.setText("");
-
-                        }
-                    });
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            mistakes.setText("");
+//
+//                        }
+//                    });
 
 
                 }
@@ -218,6 +218,7 @@ public class NotesEditActivity extends AppCompatActivity {
         mistakes = findViewById(R.id.topicMistakesEdit);
         saveicon = findViewById(R.id.save_icon);
         dateText = findViewById(R.id.datetvedit);
+        myPreference=getSharedPreferences("Notes",Context.MODE_PRIVATE);
         dictionary = new Vector<>();
         try {
             InputStream istream = getResources().openRawResource(R.raw.words);
