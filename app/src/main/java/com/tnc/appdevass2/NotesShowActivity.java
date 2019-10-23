@@ -14,8 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
 import com.tnc.appdevass2.ModelClass.NotesInformation;
 
 import org.json.JSONArray;
@@ -81,7 +80,7 @@ public class NotesShowActivity extends AppCompatActivity {
     private void saveNotesTitleArray() {
         String json = "";
         if (myNotes != null && myNotes.size() > 0) {
-            json = "notes:{[";
+            json = "{notes:[";
             int x = 0;
             for (NotesInformation note : myNotes) {
                 json = json + "{" + "topic:" + "\"" + note.getTitle() + "\",description:" + "\""
@@ -109,6 +108,7 @@ public class NotesShowActivity extends AppCompatActivity {
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(NotesShowActivity.this);
                 builder.setTitle("Are You Sure?");
+                builder.setMessage("This Delete will not be undone!");
 
                 builder.setPositiveButton("Yes", new
                         DialogInterface.OnClickListener() {

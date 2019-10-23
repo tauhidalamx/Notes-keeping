@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.tnc.appdevass2.ModelClass.NotesInformation;
 
 import java.io.BufferedReader;
@@ -148,7 +147,6 @@ public class NotesEditActivity extends AppCompatActivity {
 
 
     private void threadForMistakes() {
-
         Thread t = new Thread(new Runnable() {
             public void run() {
                 while (true) {

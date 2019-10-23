@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/datetvedit"
             android:text="Date:"
-            android:textSize="10dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:inputType="none"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description:"
-            android:textSize="10dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/topicDescriptionEdit"
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mistakes:"
-            android:textSize="10dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/topicMistakesEdit"
